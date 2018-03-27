@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TextfieldEffects" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zqW-jW-CjO">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="89" id="XiV-Yw-mzQ">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="89"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XiV-Yw-mzQ" id="HBk-hP-ccE">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nfT-oL-6H1" customClass="EffectsTextfield" customModule="TextfieldEffects" customModuleProvider="target">
+                                                    <rect key="frame" x="20" y="17" width="280" height="55"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="55" id="Bqe-DC-PEe"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nfT-oL-6H1" firstAttribute="leading" secondItem="HBk-hP-ccE" secondAttribute="leadingMargin" constant="5" id="7yz-7e-m3K"/>
+                                                <constraint firstItem="nfT-oL-6H1" firstAttribute="top" secondItem="HBk-hP-ccE" secondAttribute="topMargin" constant="6" id="Qmp-xo-zWy"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="nfT-oL-6H1" secondAttribute="bottom" constant="6" id="lVz-bf-8x3"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="nfT-oL-6H1" secondAttribute="trailing" constant="5" id="nbQ-XD-l2s"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell2" rowHeight="89" id="Yvr-of-AYa">
+                                        <rect key="frame" x="0.0" y="117" width="320" height="89"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yvr-of-AYa" id="iqq-pE-cqs">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CBy-jj-A0H" customClass="SlidingPlaceHolderTextField" customModule="TextfieldEffects" customModuleProvider="target">
+                                                    <rect key="frame" x="20" y="17" width="280" height="55"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="55" id="655-tE-0Bk"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="CBy-jj-A0H" firstAttribute="top" secondItem="iqq-pE-cqs" secondAttribute="topMargin" constant="6" id="1Or-wt-ulZ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="CBy-jj-A0H" secondAttribute="bottom" constant="6" id="T4w-d0-9Wt"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="CBy-jj-A0H" secondAttribute="trailing" constant="5" id="fIX-ms-HiE"/>
+                                                <constraint firstItem="CBy-jj-A0H" firstAttribute="leading" secondItem="iqq-pE-cqs" secondAttribute="leadingMargin" constant="5" id="r2f-Dg-UmD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="9S0-MN-e0t"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Oag-yH-ciS"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92156862750000001" green="0.92063152790000002" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="zqW-jW-CjO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="G7c-DA-rpr"/>
+                            <constraint firstItem="zqW-jW-CjO" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="R0q-lH-kzh"/>
+                            <constraint firstItem="zqW-jW-CjO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gAO-qx-2jG"/>
+                            <constraint firstItem="zqW-jW-CjO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jRc-UI-W1w"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="zqW-jW-CjO" id="jMx-KO-Dfd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116.25" y="114.08450704225352"/>
+        </scene>
+        <!--Outelt View Controller-->
+        <scene sceneID="Nfg-04-KsG">
+            <objects>
+                <viewController id="b2E-0l-DEP" customClass="OuteltViewController" customModule="TextfieldEffects" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="czM-hB-FRl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uea-FN-IQb" customClass="EffectsTextfield" customModule="TextfieldEffects" customModuleProvider="target">
+                                <rect key="frame" x="20" y="267" width="280" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="8M2-iw-d9a"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92156862750000001" green="0.92063152790000002" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="EBN-8r-D96" firstAttribute="trailing" secondItem="Uea-FN-IQb" secondAttribute="trailing" constant="20" id="7aU-ON-eMJ"/>
+                            <constraint firstItem="Uea-FN-IQb" firstAttribute="leading" secondItem="EBN-8r-D96" secondAttribute="leading" constant="20" id="Qaw-co-BTt"/>
+                            <constraint firstItem="Uea-FN-IQb" firstAttribute="centerY" secondItem="czM-hB-FRl" secondAttribute="centerY" id="y0h-rs-KBs"/>
+                            <constraint firstItem="Uea-FN-IQb" firstAttribute="centerX" secondItem="czM-hB-FRl" secondAttribute="centerX" id="zHu-mB-Z2q"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EBN-8r-D96"/>
+                    </view>
+                    <connections>
+                        <outlet property="textfield" destination="Uea-FN-IQb" id="huu-Zx-R4H"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H7S-CX-bqW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="866" y="114"/>
+        </scene>
+    </scenes>
+</document>
