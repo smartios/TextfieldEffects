@@ -1,19 +1,22 @@
 //
-//  SlidingPlaceHolderTextField.swift
+//  BottomEffectsTextFields.swift
 //  TextfieldEffects
 //
-//  Created by Vaibhav Agarwal on 3/27/18.
+//  Created by Vaibhav Agarwal on 3/28/18.
 //  Copyright © 2018 Vaibhav Agarwal. All rights reserved.
+//
 
 import UIKit
 
-class SlidingPlaceHolderTextField: UITextField {
+@IBDesignable
+class BottomEffectsTextFields: UITextField {
     
-    //MARK:- Views and Values
-    var padding = UIEdgeInsets()
+    //MARK:- views
     let placeHolderLabel = UILabel()
     let imageView = UIImageView()
-    var needCornerRadius = false
+    
+    //var EffectsTextfieldDelegate: EffectsTextfieldDelegate?
+    let padding = UIEdgeInsets(top: 0, left: 5, bottom: 10, right: 0)
     
     //MARK:-  Inspectables placeholder attributes
     @IBInspectable var activePlaceHolderFontColor: UIColor = UIColor.black
@@ -22,7 +25,6 @@ class SlidingPlaceHolderTextField: UITextField {
             self.setInactiveTextfieldAttributes()
         }
     }
-    
     @IBInspectable var inactivePlaceHolderFontColor: UIColor! = UIColor.black
         {
         didSet{
@@ -53,17 +55,18 @@ class SlidingPlaceHolderTextField: UITextField {
         }
     }
     
-    @IBInspectable var activeplaceholderBGColor: UIColor = hexStringToUIColor(hex: "7B9EA8") {
+    //MARK:-  Inspectables imageview attributes
+    @IBInspectable var activeImageViewColor: UIColor = UIColor.black {
+        didSet{
+            self.setInactiveTextfieldAttributes()
+        }
+    }
+    @IBInspectable var inactiveImageViewColor: UIColor = UIColor.black {
         didSet{
             self.setInactiveTextfieldAttributes()
         }
     }
     
-    @IBInspectable var inactiveplaceholderBGColor: UIColor = hexStringToUIColor(hex: "F2E9E4") {
-        didSet{
-            self.setInactiveTextfieldAttributes()
-        }
-    }
     
     //MARK:-  Inspectables textfield attributes
     @IBInspectable var textFieldTextColor: UIColor = UIColor.black {
@@ -72,6 +75,7 @@ class SlidingPlaceHolderTextField: UITextField {
         }
     }
     
+    //background color of textfield
     @IBInspectable var activeTextFieldBGColor: UIColor = UIColor.clear {
         didSet{
             self.setInactiveTextfieldAttributes()
@@ -84,15 +88,20 @@ class SlidingPlaceHolderTextField: UITextField {
         }
     }
     
-    @IBInspectable var activeImageViewBGColor: UIColor = hexStringToUIColor(hex: "F2E9E4")
-    
-    
-    //MARK:- Lifecycle functions
+    //MARK:- Lifecycle Functions
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        //set the views when nib is loaded
         setdefaultViewsSettings()
+    }
+    
+    
+    /// This is called after the view is loaded
+    ///
+    override func draw(_ rect: CGRect) {
+        if(self.text?.isEmpty)!
+        {
+            inActiveStateAttributes()
+        }
     }
     
     
@@ -111,114 +120,89 @@ class SlidingPlaceHolderTextField: UITextField {
         }
     }
     
-    /// This is called after the view is fully loaded to set the frames
-    ///
-    override func draw(_ rect: CGRect) {
-        
-        padding = UIEdgeInsets(top: 10, left: 5, bottom: 0, right: (self.frame.size.width)*0.25)
-        
-        if (self.text?.isEmpty)! && !(self.isEditing)
-        {
-            hideTextfield()
-        }
-    }
     
-    
-    /// Placeholder label and bottom imageview is added to the textfield
+    /// adding default valued on the textfield
     func setdefaultViewsSettings()
     {
-        placeHolderLabel.numberOfLines = 0
         self.addSubview(placeHolderLabel)
         self.addSubview(imageView)
     }
     
-    
-    //MARK:- show/hide textfield
-    
-    
-    /// The textfield is hidden by overlapping it with the label
-    /// label is slided to the left in uiview animation
-    /// imageview is also hidden by making its width and height 0
-    func hideTextfield()
-    {
-        UIView.animate(withDuration: 0.4, animations: {
-            self.placeHolderLabel.frame = CGRect(x: 2, y: 2, width: (self.frame.size.width)-4, height: self.frame.size.height-4)
-            self.imageView.frame = CGRect(x: 0, y: self.frame.size.height-2, width: 0, height: 0)
-        })
-        
-        self.setInactiveTextfieldAttributes()
-    }
+    //MARK:- setting attributes
     
     
-    /// The textfield is shown by sliding it to 3/4 of the screen
-    /// label is slided to the right in uiview animation
-    /// imageview is shown in a uiview animation
-    func showTextfield()
-    {
-        self.imageView.backgroundColor = activeImageViewBGColor
-        UIView.animate(withDuration: 0.4, animations: {
-            self.placeHolderLabel.frame = CGRect(x: (self.frame.size.width)*0.75, y: 0, width: (self.frame.size.width)*0.25, height: self.frame.size.height)
-            self.imageView.frame = CGRect(x: 0, y: self.frame.size.height-2, width: ((self.frame.size.width)*0.75)-2, height: 2)
-        })
-        
-        self.setActiveTextfieldAttributes()
-    }
-    
-    //MARK:- setting attirbutes
-    
-    
-    /// This is called when the textfield is shown.
-    /// It is triggered from showTextfield()
-    /// All the placeholder and textfields attributes are set here for active state
+    /// set the textfield attributes for active state
     func setActiveTextfieldAttributes()
     {
         //active textfield background color
         self.backgroundColor = activeTextFieldBGColor
         
+        //imageview below textfield color
+        imageView.backgroundColor = activeImageViewColor
+        
         //placeholder label attributes
         placeHolderLabel.font.withSize(CGFloat(activePlaceHolderFontSize))
         placeHolderLabel.textColor = activePlaceHolderFontColor
         placeHolderLabel.text = activePlaceHoldertext
-        placeHolderLabel.backgroundColor = activeplaceholderBGColor
-        self.placeHolderLabel.clipsToBounds = true
-        self.placeHolderLabel.layer.cornerRadius = 0
     }
     
     
-    /// This is called when the textfield is hidden.
-    /// It is triggered from hideTextfield()
-    /// All the placeholder and textfields attributes are set here for inactive state
+    /// set the textfield attributes for inactive state
     func setInactiveTextfieldAttributes()
     {
         //imageview below textfield color
         self.backgroundColor = inactiveTextFieldBGColor
         
+        //imageview below textfield color
+        imageView.backgroundColor = inactiveImageViewColor
+        
         //placeholder label attributes
         placeHolderLabel.font.withSize(CGFloat(inactivePlaceHolderFontSize))
         placeHolderLabel.textColor = inactivePlaceHolderFontColor
-        placeHolderLabel.backgroundColor = inactiveplaceholderBGColor
         placeHolderLabel.alpha = 0.6
-        self.placeHolderLabel.clipsToBounds = true
-        
-        
-        //if corner radius is needed
-        //need to be set when using this textfield
-        //in default it is false
-        if(needCornerRadius)
+        placeHolderLabel.text = inactivePlaceHoldertext
+    }
+    
+    //MARK:- setting views
+    
+    
+    /// to set frame of placeholder label on top of the textfield
+    func activeStateAttributes()
+    {
+        if(self.text?.isEmpty)!
         {
-            placeHolderLabel.text = "  " + inactivePlaceHoldertext
-            self.placeHolderLabel.layer.cornerRadius = self.placeHolderLabel.frame.size.height/3.5
+            self.imageView.frame = CGRect(x: 1, y: self.frame.size.height-13, width: self.frame.size.width-2, height: 0)
+            self.placeHolderLabel.frame = CGRect(x: 3, y: (self.frame.size.height)+5, width: self.frame.size.width-6, height: 0)
+            
+            self.imageView.backgroundColor = activeImageViewColor
+            
+            UIView.animate(withDuration: 0.4, animations: {
+                self.placeHolderLabel.frame = CGRect(x: 3, y: (self.frame.size.height)-8, width: self.frame.size.width-6, height: 15)
+                self.imageView.frame = CGRect(x: 1, y: self.frame.size.height-13 , width: self.frame.size.width-2, height: 2)
+            })
         }
-        else
+    }
+    
+    /// to set frame of placeholder label in middle of the textfield
+    func inActiveStateAttributes()
+    {
+        //setting placeHolderLabel on the textview
+        self.imageView.frame = CGRect(x: 1, y: self.frame.size.height-13, width: self.frame.size.width-2, height: 0)
+        self.placeHolderLabel.frame = CGRect(x: 3, y: (self.frame.size.height)+5, width: self.frame.size.width-6, height: 0)
+        
+        if(self.text?.isEmpty)!
         {
-            placeHolderLabel.text = " " + inactivePlaceHoldertext
-            self.placeHolderLabel.layer.cornerRadius = 0
+            UIView.animate(withDuration: 0.4, animations: {
+                
+                self.placeHolderLabel.frame = CGRect(x: 3, y: (self.frame.size.height)-8, width: self.frame.size.width-6, height: 15)
+                self.imageView.frame = CGRect(x: 1, y: self.frame.size.height-13, width: self.frame.size.width, height: 1)
+            })
+            
         }
     }
     
     
     //MARK:- textfield delegates
-    
     
     /// to set the editing inset of the textfield
     ///
@@ -234,20 +218,25 @@ class SlidingPlaceHolderTextField: UITextField {
         return UIEdgeInsetsInsetRect(bounds, padding)
     }
     
-    
-    /// It is triggered from the notification when textfield begins editing
-    /// if the textfield is empty the textfield will be hidden
-    /// if the textfield is not empty the textfield will be shown
+    /// It is triggered from the notification when textfield ends editing
+    /// if the textfield is empty the textfield will be show in inactive state
+    /// if the textfield is not empty the textfield will be show in active state
     @objc func textFieldDidEndEditing()
     {
-        if (self.text?.isEmpty)!
+        if(self.text?.isEmpty)!
         {
-            hideTextfield()
+            setInactiveTextfieldAttributes()
+            self.inActiveStateAttributes()
         }
     }
     
-    /// It is triggered from the notification when textfield ends editing
+    /// It is triggered from the notification when textfield begins editing
     @objc func textFieldDidBeginEditing(){
-        showTextfield()
+        
+        if(self.text?.isEmpty)!
+        {
+            setActiveTextfieldAttributes()
+            activeStateAttributes()
+        }
     }
 }

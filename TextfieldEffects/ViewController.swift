@@ -15,6 +15,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(UINib(nibName: "CustomizableTableViewCell", bundle: nil), forCellReuseIdentifier: "customizableCell")
+        tableView.estimatedRowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = 90
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -31,19 +34,29 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        
+        if indexPath.row == 3
+        {
+            return UITableViewAutomaticDimension
+        }
+        
+        return 70
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
         
-        if(indexPath.row == 0 || indexPath.row == 1)
+        
+        if(indexPath.row == 0)
         {
-            cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
             let fld = cell.viewWithTag(1) as! EffectsTextfield
             fld.delegate = self
             fld.activePlaceHoldertext = "First Name"
@@ -52,18 +65,48 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             fld.inactiveImageViewColor = hexStringToUIColor(hex: "646E68")
             fld.activePlaceHolderFontColor = hexStringToUIColor(hex: "E6C79C")
             fld.inactivePlaceHolderFontColor = hexStringToUIColor(hex: "7B9EA8")
-            //        fld.activeTextFieldBorderColor = hexStringToUIColor(hex: "19a3c0").cgColor
-            //        fld.activeTextFieldBorderWidth = 1.0
-            //        fld.activeTextFieldCornerRadius = 10
+//            fld.activeTextFieldBorderColor = hexStringToUIColor(hex: "19a3c0").cgColor
+//            fld.activeTextFieldBorderWidth = 1.0
+//            fld.activeTextFieldCornerRadius = 10
+            
+            return cell
+        }
+        else if indexPath.row == 1
+        {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell3")!
+            cell.selectionStyle = .none
+            let fld = cell.viewWithTag(1) as! BottomEffectsTextFields
+            fld.delegate = self
+            fld.activePlaceHoldertext = "First Name"
+            fld.inactivePlaceHoldertext = "Enter First Name"
+            fld.activeImageViewColor = hexStringToUIColor(hex: "718F94")
+            fld.inactiveImageViewColor = hexStringToUIColor(hex: "646E68")
+            fld.activePlaceHolderFontColor = hexStringToUIColor(hex: "E6C79C")
+            fld.inactivePlaceHolderFontColor = hexStringToUIColor(hex: "7B9EA8")
+            
+            return  cell
+        }
+        else if indexPath.row == 3
+        {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "customizableCell") as! CustomizableTableViewCell
+  
+            return cell
         }
         else
         {
-            cell = tableView.dequeueReusableCell(withIdentifier: "cell2")!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell2")!
             let fld = cell.viewWithTag(1) as! SlidingPlaceHolderTextField
             fld.delegate = self
+            fld.activePlaceHoldertext = "First Name"
+            fld.inactivePlaceHoldertext = "Enter First Name"
+           // fld.needCornerRadius = true
+            
+            return cell
         }
         
+        let cell = UITableViewCell()
         return cell
+        
     }
 }
 

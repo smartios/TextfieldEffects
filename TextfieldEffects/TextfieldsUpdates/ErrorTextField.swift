@@ -1,30 +1,23 @@
 //
-//  EffectsTextfield.swift
+//  ErrorTextField.swift
 //  TextfieldEffects
 //
-//  Created by Vaibhav Agarwal on 3/26/18.
+//  Created by Vaibhav Agarwal on 3/28/18.
 //  Copyright © 2018 Vaibhav Agarwal. All rights reserved.
 //
 
 import UIKit
 
-//@objc protocol EffectsTextfieldDelegate: class {
-//    @objc optional  func EffectstextFieldDidBeginEditing(_ sender: EffectsTextfield)
-//    @objc optional  func EffectstextFieldShouldReturn(_ sender: EffectsTextfield)
-//    @objc optional  func EffectstextFieldDidEndEditing(_ sender: EffectsTextfield) -> Bool
-//    @objc optional  func EffectstextFieldShouldChange(_ sender: EffectsTextfield, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
-//}
-
 @IBDesignable
-//UITextFieldDelegate
-class EffectsTextfield: UITextField {
+class ErrorTextField: UITextField {
     
-    //MARK:- views
+    
     let placeHolderLabel = UILabel()
     let imageView = UIImageView()
-    
+    let errorLabel = UILabel()
+    var showErrorLabel = false
     //var EffectsTextfieldDelegate: EffectsTextfieldDelegate?
-    let padding = UIEdgeInsets(top: 18, left: 5, bottom: 0, right: 0)
+    let padding = UIEdgeInsets(top: 10, left: 5, bottom: 0, right: 0)
     
     //MARK:-  Inspectables placeholder attributes
     @IBInspectable var activePlaceHolderFontColor: UIColor = UIColor.black
@@ -117,25 +110,62 @@ class EffectsTextfield: UITextField {
         }
     }
     
+    //MARK:- Error Label Inspectables
+    @IBInspectable var errorBorderWidth: CGFloat = 0
+        {
+        didSet{
+            setErrorLabelAttributes()
+        }
+    }
+    
+    @IBInspectable var errorBorderColor: UIColor = UIColor.clear
+        {
+        didSet{
+            setErrorLabelAttributes()
+        }
+    }
+    
+    @IBInspectable var errorLabelFontSize: CGFloat = 9
+        {
+        didSet{
+            setErrorLabelAttributes()
+        }
+    }
+    
+    @IBInspectable var errorLabelFont: String = ""
+        {
+        didSet{
+            setErrorLabelAttributes()
+        }
+    }
+    
+    @IBInspectable var errorLabelFontColor: UIColor = UIColor.black
+        {
+        didSet{
+            setErrorLabelAttributes()
+        }
+    }
+    
+    @IBInspectable var errorLabelBGColor: UIColor = UIColor.clear
+        {
+        didSet{
+            setErrorLabelAttributes()
+        }
+    }
+    var errorLabelText: String = ""
+    
+    
     //MARK:- Lifecycle Functions
     override func awakeFromNib() {
         super.awakeFromNib()
         setdefaultViewsSettings()
     }
     
-    
-    /// This is called after the view is loaded
-    ///
     override func draw(_ rect: CGRect) {
         self.setLayerAttributes(active: false)
-        inActiveStateTextfieldAttributes()
+        PlaceHolderAnimation_Down()
     }
     
-    
-    /// This is automatically called when the view is added to the supervew
-    ///
-    /// -Notifications for textfield begin and edit is added to get the event to trigger functions
-    ///
     override open func willMove(toSuperview newSuperview: UIView!) {
         
         if newSuperview != nil {
@@ -147,18 +177,14 @@ class EffectsTextfield: UITextField {
         }
     }
     
-    
-    /// adding default valued on the textfield
     func setdefaultViewsSettings()
     {
         self.addSubview(placeHolderLabel)
         self.addSubview(imageView)
+        self.addSubview(errorLabel)
     }
     
-    //MARK:- setting attributes
-    
-    
-    /// set the textfield attributes for active state
+    //MARK:- setting attirbutes
     func setActiveTextfieldAttributes()
     {
         //active textfield background color
@@ -174,8 +200,6 @@ class EffectsTextfield: UITextField {
         self.layer.cornerRadius = activeTextFieldCornerRadius
     }
     
-    
-    /// set the textfield attributes for inactive state
     func setInactiveTextfieldAttributes()
     {
         //imageview below textfield color
@@ -190,11 +214,8 @@ class EffectsTextfield: UITextField {
         placeHolderLabel.alpha = 0.6
         placeHolderLabel.text = inactivePlaceHoldertext
         self.layer.cornerRadius = activeTextFieldCornerRadius
-        
     }
-    
-    /// set the textfield attributes for active state
-    /// it will be set when the borderwidth is given
+
     func setLayerAttributes(active: Bool)
     {
         if(active)
@@ -213,53 +234,49 @@ class EffectsTextfield: UITextField {
     
     //MARK:- setting views
     
-    
-    /// to set frame of placeholder label on top of the textfield
-    func activeStateTextfieldAttributes()
+    func PlaceHolderAnimation_Up()
     {
+        //setting placeHolderLabel above the textview
         if(self.text?.isEmpty)!
         {
-            self.imageView.frame = CGRect(x: 3, y: self.frame.size.height, width: 0, height: 2)
+            self.imageView.frame = CGRect(x: 1, y: self.frame.size.height, width: 0, height: 2)
             self.imageView.backgroundColor = activeImageViewColor
             
             UIView.animate(withDuration: 0.4, animations: {
-                self.placeHolderLabel.frame = CGRect(x: 3, y: 5, width: self.frame.size.width-6, height: 15)
+                self.placeHolderLabel.frame = CGRect(x: 5, y: 5, width: self.frame.size.width-6, height: 15)
                 
                 if(self.activeTextFieldBorderWidth == 0)
                 {
-                    self.imageView.frame = CGRect(x: 3, y: self.frame.size.height+1 , width: self.frame.size.width-5, height: 2)
+                    self.imageView.frame = CGRect(x: 1, y: self.frame.size.height+1 , width: self.frame.size.width-2, height: 2)
                 }
                 else
                 {
                     self.setLayerAttributes(active: true)
                 }
+                
             })
         }
     }
     
-    /// to set frame of placeholder label in middle of the textfield
-    func inActiveStateTextfieldAttributes()
+    
+    func PlaceHolderAnimation_Down()
     {
-        //setting placeHolderLabel on the textfield
+        //setting placeHolderLabel on the textview
         if(self.text?.isEmpty)!
         {
-            placeHolderLabel.frame = CGRect(x: 2, y: self.center.y, width: self.frame.size.width-6, height: 15)
-            imageView.frame = CGRect(x: 3, y: self.frame.size.height, width: self.frame.size.width, height: 1)
+            placeHolderLabel.frame = CGRect(x: 3, y: self.center.y, width: self.frame.size.width-6, height: 15)
+            imageView.frame = CGRect(x: 1, y: self.frame.size.height, width: self.frame.size.width, height: 1)
             
             if(self.activeTextFieldBorderWidth != 0)
             {
                 self.setLayerAttributes(active: false)
             }
         }
-        
-        self.placeHolderLabel.center.y = self.center.y
     }
     
     
-    //MARK:- textfield delegates
     
-    /// to set the editing inset of the textfield
-    ///
+    //MARK:- textfield delegates
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         return UIEdgeInsetsInsetRect(bounds, padding)
     }
@@ -272,22 +289,33 @@ class EffectsTextfield: UITextField {
         return UIEdgeInsetsInsetRect(bounds, padding)
     }
     
-    /// It is triggered from the notification when textfield ends editing
-    /// if the textfield is empty the textfield will be show in inactive state
-    /// if the textfield is not empty the textfield will be show in active state
     @objc func textFieldDidEndEditing()
     {
         if(self.text?.isEmpty)!
         {
             setInactiveTextfieldAttributes()
-            self.inActiveStateTextfieldAttributes()
+            self.PlaceHolderAnimation_Down()
         }
     }
     
-    /// It is triggered from the notification when textfield begins editing
     @objc func textFieldDidBeginEditing(){
-        
         setActiveTextfieldAttributes()
-        activeStateTextfieldAttributes()
+        PlaceHolderAnimation_Up()
+    }
+    
+    //MARK:- Error Label Attributes
+    func setErrorLabelAttributes()
+    {
+        errorLabel.backgroundColor = errorLabelBGColor
+        errorLabel.text = errorLabelText
+        errorLabel.textColor = errorLabelFontColor
+        
+        if(errorLabelFont != "")
+        {
+            errorLabel.font = UIFont(name: errorLabelFont, size: errorLabelFontSize)
+        }
+        
+        self.layer.borderColor = errorBorderColor.cgColor
+        self.layer.borderWidth = errorBorderWidth
     }
 }
