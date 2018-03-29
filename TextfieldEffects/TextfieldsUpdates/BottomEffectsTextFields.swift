@@ -44,12 +44,12 @@ class BottomEffectsTextFields: UITextField {
         }
     }
     
-    @IBInspectable var activePlaceHolderFontSize:Int = 9 {
+    @IBInspectable var activePlaceHolderFontSize:CGFloat = 13 {
         didSet{
             self.setInactiveTextfieldAttributes()
         }
     }
-    @IBInspectable var inactivePlaceHolderFontSize:Int = 12 {
+    @IBInspectable var inactivePlaceHolderFontSize:CGFloat = 15 {
         didSet{
             self.setInactiveTextfieldAttributes()
         }
@@ -141,7 +141,7 @@ class BottomEffectsTextFields: UITextField {
         imageView.backgroundColor = activeImageViewColor
         
         //placeholder label attributes
-        placeHolderLabel.font.withSize(CGFloat(activePlaceHolderFontSize))
+        placeHolderLabel.font = UIFont(name: placeHolderLabel.font.fontName, size: activePlaceHolderFontSize)
         placeHolderLabel.textColor = activePlaceHolderFontColor
         placeHolderLabel.text = activePlaceHoldertext
     }
@@ -157,7 +157,7 @@ class BottomEffectsTextFields: UITextField {
         imageView.backgroundColor = inactiveImageViewColor
         
         //placeholder label attributes
-        placeHolderLabel.font.withSize(CGFloat(inactivePlaceHolderFontSize))
+        placeHolderLabel.font = UIFont(name: placeHolderLabel.font.fontName, size: inactivePlaceHolderFontSize)
         placeHolderLabel.textColor = inactivePlaceHolderFontColor
         placeHolderLabel.alpha = 0.6
         placeHolderLabel.text = inactivePlaceHoldertext

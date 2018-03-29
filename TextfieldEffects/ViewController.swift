@@ -89,7 +89,18 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         else if indexPath.row == 3
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "customizableCell") as! CustomizableTableViewCell
-  
+            cell.hideRightButton()
+            cell.hideLeftButton()
+            cell.hideHeaderLabel()
+            
+            return cell
+        }
+        else if indexPath.row == 2
+        {
+           let cell = tableView.dequeueReusableCell(withIdentifier: "cell4")!
+            cell.selectionStyle = .none
+           let _ = cell.viewWithTag(1) as! ErrorTextField
+            
             return cell
         }
         else

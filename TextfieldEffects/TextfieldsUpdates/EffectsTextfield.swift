@@ -52,12 +52,12 @@ class EffectsTextfield: UITextField {
         }
     }
     
-    @IBInspectable var activePlaceHolderFontSize:Int = 9 {
+    @IBInspectable var activePlaceHolderFontSize:CGFloat = 13 {
         didSet{
             self.setInactiveTextfieldAttributes()
         }
     }
-    @IBInspectable var inactivePlaceHolderFontSize:Int = 12 {
+    @IBInspectable var inactivePlaceHolderFontSize:CGFloat = 15 {
         didSet{
             self.setInactiveTextfieldAttributes()
         }
@@ -127,8 +127,12 @@ class EffectsTextfield: UITextField {
     /// This is called after the view is loaded
     ///
     override func draw(_ rect: CGRect) {
-        self.setLayerAttributes(active: false)
-        inActiveStateTextfieldAttributes()
+        
+        if(self.text?.isEmpty)!
+        {
+            self.setLayerAttributes(active: false)
+            inActiveStateTextfieldAttributes()
+        }
     }
     
     
@@ -168,7 +172,7 @@ class EffectsTextfield: UITextField {
         imageView.backgroundColor = activeImageViewColor
         
         //placeholder label attributes
-        placeHolderLabel.font.withSize(CGFloat(activePlaceHolderFontSize))
+        placeHolderLabel.font = UIFont(name: placeHolderLabel.font.fontName, size: activePlaceHolderFontSize)
         placeHolderLabel.textColor = activePlaceHolderFontColor
         placeHolderLabel.text = activePlaceHoldertext
         self.layer.cornerRadius = activeTextFieldCornerRadius
@@ -185,7 +189,7 @@ class EffectsTextfield: UITextField {
         imageView.backgroundColor = inactiveImageViewColor
         
         //placeholder label attributes
-        placeHolderLabel.font.withSize(CGFloat(inactivePlaceHolderFontSize))
+         placeHolderLabel.font = UIFont(name: placeHolderLabel.font.fontName, size: inactivePlaceHolderFontSize)
         placeHolderLabel.textColor = inactivePlaceHolderFontColor
         placeHolderLabel.alpha = 0.6
         placeHolderLabel.text = inactivePlaceHoldertext

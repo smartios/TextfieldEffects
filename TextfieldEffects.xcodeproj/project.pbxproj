@@ -13,7 +13,13 @@
 		8032622A2068D3C4000E2DD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 803262292068D3C4000E2DD6 /* Assets.xcassets */; };
 		8032622D2068D3C4000E2DD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8032622B2068D3C4000E2DD6 /* LaunchScreen.storyboard */; };
 		8032623720690365000E2DD6 /* EffectsTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032623620690365000E2DD6 /* EffectsTextfield.swift */; };
+		804062B8206CF339001FE034 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804062B6206CF339001FE034 /* CardViewController.swift */; };
+		804062B9206CF339001FE034 /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 804062B7206CF339001FE034 /* CardViewController.xib */; };
 		809BF3A1206A1FD2009A4991 /* OuteltViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809BF3A0206A1FD2009A4991 /* OuteltViewController.swift */; };
+		80A12037206CC88700531674 /* CardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A12035206CC88700531674 /* CardTableViewController.swift */; };
+		80A12038206CC88700531674 /* CardTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80A12036206CC88700531674 /* CardTableViewController.xib */; };
+		80A1203B206CC8AE00531674 /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A12039206CC8AE00531674 /* CardTableViewCell.swift */; };
+		80A1203C206CC8AE00531674 /* CardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80A1203A206CC8AE00531674 /* CardTableViewCell.xib */; };
 		80A7D86E206A53A50029D93F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A7D86D206A53A40029D93F /* Constant.swift */; };
 		80A7D872206A688B0029D93F /* SlidingPlaceHolderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A7D871206A688B0029D93F /* SlidingPlaceHolderTextField.swift */; };
 		80FB2187206B8E1A0034C18A /* CustomizableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB2185206B8E1A0034C18A /* CustomizableTableViewCell.swift */; };
@@ -31,7 +37,13 @@
 		8032622C2068D3C4000E2DD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8032622E2068D3C4000E2DD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8032623620690365000E2DD6 /* EffectsTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectsTextfield.swift; sourceTree = "<group>"; };
+		804062B6206CF339001FE034 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		804062B7206CF339001FE034 /* CardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewController.xib; sourceTree = "<group>"; };
 		809BF3A0206A1FD2009A4991 /* OuteltViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuteltViewController.swift; sourceTree = "<group>"; };
+		80A12035206CC88700531674 /* CardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableViewController.swift; sourceTree = "<group>"; };
+		80A12036206CC88700531674 /* CardTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardTableViewController.xib; sourceTree = "<group>"; };
+		80A12039206CC8AE00531674 /* CardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
+		80A1203A206CC8AE00531674 /* CardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardTableViewCell.xib; sourceTree = "<group>"; };
 		80A7D86D206A53A40029D93F /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		80A7D871206A688B0029D93F /* SlidingPlaceHolderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingPlaceHolderTextField.swift; sourceTree = "<group>"; };
 		80FB2185206B8E1A0034C18A /* CustomizableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizableTableViewCell.swift; sourceTree = "<group>"; };
@@ -70,6 +82,7 @@
 		803262212068D3C4000E2DD6 /* TextfieldEffects */ = {
 			isa = PBXGroup;
 			children = (
+				80A12032206CC85B00531674 /* TableViewCards */,
 				80A7D873206A68AD0029D93F /* TextfieldsUpdates */,
 				803262222068D3C4000E2DD6 /* AppDelegate.swift */,
 				803262242068D3C4000E2DD6 /* ViewController.swift */,
@@ -81,6 +94,19 @@
 				8032622E2068D3C4000E2DD6 /* Info.plist */,
 			);
 			path = TextfieldEffects;
+			sourceTree = "<group>";
+		};
+		80A12032206CC85B00531674 /* TableViewCards */ = {
+			isa = PBXGroup;
+			children = (
+				80A12035206CC88700531674 /* CardTableViewController.swift */,
+				80A12036206CC88700531674 /* CardTableViewController.xib */,
+				80A12039206CC8AE00531674 /* CardTableViewCell.swift */,
+				80A1203A206CC8AE00531674 /* CardTableViewCell.xib */,
+				804062B6206CF339001FE034 /* CardViewController.swift */,
+				804062B7206CF339001FE034 /* CardViewController.xib */,
+			);
+			path = TableViewCards;
 			sourceTree = "<group>";
 		};
 		80A7D873206A68AD0029D93F /* TextfieldsUpdates */ = {
@@ -157,8 +183,11 @@
 			files = (
 				8032622D2068D3C4000E2DD6 /* LaunchScreen.storyboard in Resources */,
 				8032622A2068D3C4000E2DD6 /* Assets.xcassets in Resources */,
+				80A12038206CC88700531674 /* CardTableViewController.xib in Resources */,
 				803262282068D3C4000E2DD6 /* Main.storyboard in Resources */,
+				804062B9206CF339001FE034 /* CardViewController.xib in Resources */,
 				80FB2188206B8E1A0034C18A /* CustomizableTableViewCell.xib in Resources */,
+				80A1203C206CC8AE00531674 /* CardTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,11 +199,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				803262252068D3C4000E2DD6 /* ViewController.swift in Sources */,
+				80A1203B206CC8AE00531674 /* CardTableViewCell.swift in Sources */,
 				8032623720690365000E2DD6 /* EffectsTextfield.swift in Sources */,
 				80FB218A206BA5C70034C18A /* ErrorTextField.swift in Sources */,
+				80A12037206CC88700531674 /* CardTableViewController.swift in Sources */,
 				80A7D872206A688B0029D93F /* SlidingPlaceHolderTextField.swift in Sources */,
 				80FB2187206B8E1A0034C18A /* CustomizableTableViewCell.swift in Sources */,
 				80FB218C206BBB210034C18A /* BottomEffectsTextFields.swift in Sources */,
+				804062B8206CF339001FE034 /* CardViewController.swift in Sources */,
 				803262232068D3C4000E2DD6 /* AppDelegate.swift in Sources */,
 				809BF3A1206A1FD2009A4991 /* OuteltViewController.swift in Sources */,
 				80A7D86E206A53A50029D93F /* Constant.swift in Sources */,
@@ -315,13 +347,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = J6XQ9CB78Q;
 				INFOPLIST_FILE = TextfieldEffects/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com..TextfieldEffects;
+				PRODUCT_BUNDLE_IDENTIFIER = com.singsys.enterprise.TextfieldEffects;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "bda5c6e6-ef96-4dfc-837a-48b469fbb84b";
+				PROVISIONING_PROFILE_SPECIFIER = "Singsys Enterprise Development";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -336,7 +369,7 @@
 				INFOPLIST_FILE = TextfieldEffects/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com..TextfieldEffects;
+				PRODUCT_BUNDLE_IDENTIFIER = com.singsys.enterprise.TextfieldEffects;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;

@@ -15,6 +15,7 @@ class CustomizableTableViewCell: UITableViewCell {
     @IBOutlet weak var headerLabelHeight: NSLayoutConstraint!
     @IBOutlet weak var rightButtonWidth: NSLayoutConstraint!
     @IBOutlet weak var leftButtonWidth: NSLayoutConstraint!
+    @IBOutlet weak var textfieldHeight: NSLayoutConstraint!
     
     //MARK:- Outlets of Views
     @IBOutlet weak var headerLabel: UILabel!
@@ -154,9 +155,16 @@ class CustomizableTableViewCell: UITableViewCell {
     {
         headerLabelHeight.constant = 0
     }
+   
+    //MARK:- Textfield height
+    
+    func textfieldHeightConstraints(height: CGFloat)
+    {
+        //default height is 35
+        textfieldHeight.constant = height
+    }
     
     //MARK:- Error Label Attributes
-    
     
     /// adding error label attributes only when the errorLabelText != ""
     func setErrorLabelAttributes()

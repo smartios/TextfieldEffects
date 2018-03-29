@@ -89,6 +89,28 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell4" rowHeight="70" id="rBb-83-ROO">
+                                        <rect key="frame" x="0.0" y="238" width="320" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rBb-83-ROO" id="Z7W-cv-07I">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TfV-vH-Kle" customClass="ErrorTextField" customModule="TextfieldEffects" customModuleProvider="target">
+                                                    <rect key="frame" x="20" y="15" width="280" height="40"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="TfV-vH-Kle" secondAttribute="trailing" constant="5" id="Bf6-fy-zUa"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="TfV-vH-Kle" secondAttribute="bottom" constant="4" id="drN-ce-n8K"/>
+                                                <constraint firstItem="TfV-vH-Kle" firstAttribute="top" secondItem="Z7W-cv-07I" secondAttribute="topMargin" constant="4" id="dsh-7r-vh7"/>
+                                                <constraint firstItem="TfV-vH-Kle" firstAttribute="leading" secondItem="Z7W-cv-07I" secondAttribute="leadingMargin" constant="5" id="w2F-MT-W1I"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="9S0-MN-e0t"/>

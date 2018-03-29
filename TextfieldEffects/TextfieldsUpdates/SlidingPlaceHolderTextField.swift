@@ -42,12 +42,12 @@ class SlidingPlaceHolderTextField: UITextField {
         }
     }
     
-    @IBInspectable var activePlaceHolderFontSize:Int = 9 {
+    @IBInspectable var activePlaceHolderFontSize:CGFloat = 13 {
         didSet{
             self.setInactiveTextfieldAttributes()
         }
     }
-    @IBInspectable var inactivePlaceHolderFontSize:Int = 12 {
+    @IBInspectable var inactivePlaceHolderFontSize:CGFloat = 15 {
         didSet{
             self.setInactiveTextfieldAttributes()
         }
@@ -176,7 +176,8 @@ class SlidingPlaceHolderTextField: UITextField {
         self.backgroundColor = activeTextFieldBGColor
         
         //placeholder label attributes
-        placeHolderLabel.font.withSize(CGFloat(activePlaceHolderFontSize))
+        placeHolderLabel.textAlignment = .center
+        placeHolderLabel.font = UIFont(name: placeHolderLabel.font.fontName, size: activePlaceHolderFontSize)
         placeHolderLabel.textColor = activePlaceHolderFontColor
         placeHolderLabel.text = activePlaceHoldertext
         placeHolderLabel.backgroundColor = activeplaceholderBGColor
@@ -194,7 +195,8 @@ class SlidingPlaceHolderTextField: UITextField {
         self.backgroundColor = inactiveTextFieldBGColor
         
         //placeholder label attributes
-        placeHolderLabel.font.withSize(CGFloat(inactivePlaceHolderFontSize))
+        placeHolderLabel.textAlignment = .left
+        placeHolderLabel.font = UIFont(name: placeHolderLabel.font.fontName, size: inactivePlaceHolderFontSize)
         placeHolderLabel.textColor = inactivePlaceHolderFontColor
         placeHolderLabel.backgroundColor = inactiveplaceholderBGColor
         placeHolderLabel.alpha = 0.6
